@@ -149,7 +149,7 @@ def weekly_bar(logs: list[dict]) -> go.Figure:
     completed_dates = {log["date"] for log in logs if log["completed"]}
 
     vals   = [1 if str(d) in completed_dates else 0 for d in days]
-    labels = [d.strftime("%a\n%d") for d in days]
+    labels = [d.strftime("%d %b") for d in days]
     colors = [ACCENT if v else EMPTY_COLOR for v in vals]
 
     fig = go.Figure(
@@ -163,17 +163,32 @@ def weekly_bar(logs: list[dict]) -> go.Figure:
             hovertemplate="%{x}<extra></extra>",
         )
     )
+    # fig.update_layout(
+    #     paper_bgcolor=BG,
+    #     plot_bgcolor=BG,
+    #     font=dict(color=TEXT),
+    #     margin=dict(l=10, r=10, t=10, b=10),
+    #     height=150,
+    #     yaxis=dict(visible=False, range=[0, 1.4]),
+    #     xaxis=dict(showgrid=False, zeroline=False),
+    #     bargap=0.3,
+    # )
+    # return fig
+
     fig.update_layout(
-        paper_bgcolor=BG,
-        plot_bgcolor=BG,
-        font=dict(color=TEXT),
-        margin=dict(l=10, r=10, t=10, b=10),
-        height=150,
-        yaxis=dict(visible=False, range=[0, 1.4]),
-        xaxis=dict(showgrid=False, zeroline=False),
-        bargap=0.3,
-    )
-    return fig
+    paper_bgcolor=BG,
+    plot_bgcolor=BG,
+    font=dict(color=TEXT),
+    margin=dict(l=10, r=10, t=10, b=10),
+    height=150,
+    yaxis=dict(visible=False, range=[0, 1.4]),
+    xaxis=dict(
+        type="category",
+        showgrid=False,
+        zeroline=False,
+    ),
+    bargap=0.3,
+)
 
 
 # ── Multi-habit Completion Rate (last 30 days) ────────────────────────────────
