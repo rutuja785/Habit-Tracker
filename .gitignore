@@ -1,0 +1,17 @@
+# Database
+habits.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
