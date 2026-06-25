@@ -176,19 +176,16 @@ def weekly_bar(logs: list[dict]) -> go.Figure:
     # return fig
 
     fig.update_layout(
-    paper_bgcolor=BG,
-    plot_bgcolor=BG,
-    font=dict(color=TEXT),
-    margin=dict(l=10, r=10, t=10, b=10),
-    height=150,
-    yaxis=dict(visible=False, range=[0, 1.4]),
-    xaxis=dict(
-        type="category",
-        showgrid=False,
-        zeroline=False,
-    ),
-    bargap=0.3,
-)
+        xaxis=dict(type="category"),
+        yaxis=dict(visible=False, range=[0, 1.4]),
+        paper_bgcolor=BG,
+        plot_bgcolor=BG,
+        font=dict(color=TEXT),
+    )
+
+    return fig
+
+    
 
 
 # ── Multi-habit Completion Rate (last 30 days) ────────────────────────────────
